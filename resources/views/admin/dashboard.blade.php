@@ -10,7 +10,7 @@
                 <h3>Ultimo lavoro</h3>
             </div>
             <div class="col-9 m-auto p-3">
-                <table class="table table-dark table-hover">
+                <table class="table table-primary table-hover">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -27,12 +27,12 @@
                         <tr>
                             <td>{{ $jobs->id }}</td>
                             <td>{{ $jobs->title }}</td>
-                            <td>{{ $jobs->category->name }}</td>
+                            <td><span class="badge text-bg-dark">{{ $jobs->category->name }}</span></td>
                             <td>{{ $jobs->processing_time }} Settimane</td>
                             <td>{{ $jobs->content }}</td>
                             <td>{{ $jobs->created_at->format('d/m/Y') }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('admin.jobs.show', $jobs->id) }}">Vai</a>
+                                <a class="btn btn-dark" href="{{ route('admin.jobs.show', $jobs->id) }}">Vai</a>
                             </td>
 
                         </tr>
@@ -42,7 +42,7 @@
 
             </div>
             <div class="col-9 m-auto">
-                <h4>nel archivio ci sono {{ $count }} lavori</h4>
+                <h4>Nell' archivio ci sono {{ $count }} lavori</h4>
             </div>
 
         </div>
