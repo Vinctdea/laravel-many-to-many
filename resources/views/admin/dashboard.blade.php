@@ -15,8 +15,9 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Tempo di realizzazione</th>
                             <th scope="col">Categoria</th>
+                            <th scope="col">Tempo di realizzazione</th>
+                            <th scope="col">Contenuto</th>
                             <th scope="col">ultima modifica</th>
                             <th scope="col">Azioni</th>
 
@@ -26,6 +27,7 @@
                         <tr>
                             <td>{{ $jobs->id }}</td>
                             <td>{{ $jobs->title }}</td>
+                            <td>{{ $jobs->category->name }}</td>
                             <td>{{ $jobs->processing_time }} Settimane</td>
                             <td>{{ $jobs->content }}</td>
                             <td>{{ $jobs->created_at->format('d/m/Y') }}</td>
@@ -38,6 +40,9 @@
                     </tbody>
                 </table>
 
+            </div>
+            <div class="col-9 m-auto">
+                <h4>nel archivio ci sono {{ $count }} lavori</h4>
             </div>
 
         </div>
