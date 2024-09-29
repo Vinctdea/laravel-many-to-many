@@ -5,7 +5,8 @@
         <li><a href="{{ route('admin.jobs.index') }}"><i class="fa-solid fa-bars-progress me-2"></i>Elenco Progetti</a>
         </li>
         <li><a href="{{ route('admin.jobs.create') }}"><i class="fa-solid fa-plus me-2"></i>Nuovo progetto</a></li>
-        <li><a href="{{ route('admin.categoryJobs') }}"> <i class="fa-solid fa-icons me-2"></i>Post per categoria</a></li>
+        <li><a href="{{ route('admin.categoryJobs') }}"> <i class="fa-solid fa-icons me-2"></i>Progetti per categoria</a>
+        </li>
         <li><a href="{{ route('admin.categories.index') }}"> <i class="fa-solid fa-layer-group me-2"></i>Categorie</a>
         </li>
 

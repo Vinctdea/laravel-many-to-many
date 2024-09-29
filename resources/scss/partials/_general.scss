@@ -1,12 +1,5 @@
 header, aside{
-    a{
-        text-decoration: none;
-        color: white;
-        &:hover{
-            text-decoration: underline;
-        }
 
-    }
     li{
         line-height: 30px;
     }
@@ -16,12 +9,21 @@ li{
     list-style: none;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+    &:hover{
+        text-decoration: underline;
+    }
+
+}
+
 .wrapper{
     height: calc(100vh - 110px);
     overflow: hidden;
 }
 aside{
-    width: 200px;
+    width: 230px;
     height: 100%;
     overflow: hidden;
 }

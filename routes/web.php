@@ -27,10 +27,14 @@ Route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('home');
-        Route::resource('jobs', JobController::class);
-        Route::resource('categories', CategoryController::class);
-
         Route::get('category-jobs', [CategoryController::class, 'categoryJobs'])->name('categoryJobs');
+
+        Route::resource('jobs', JobController::class);
+        Route::resource('categories', CategoryController::class)->except([
+            'show',
+            'edit',
+            'create'
+        ]);
     });
 
 Route::middleware('auth')->group(function () {
