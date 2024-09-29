@@ -1,0 +1,32 @@
+header, aside{
+    a{
+        text-decoration: none;
+        color: white;
+        &:hover{
+            text-decoration: underline;
+        }
+
+    }
+    li{
+        line-height: 30px;
+    }
+}
+
+li{
+    list-style: none;
+}
+
+.wrapper{
+    height: calc(100vh - 110px);
+    overflow: hidden;
+}
+aside{
+    width: 200px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.ms_content{
+    overflow: auto;
+    width: 100%;
+}
