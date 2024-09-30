@@ -13,6 +13,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Descizione</th>
                 <th scope="col">Tempo di lavorazione WEEK</th>
+                <th scope="col">tag</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Data di inserimento</th>
                 <th scope="col">azioni</th>
@@ -27,9 +28,19 @@
                     <td class=" table-dark ">{{ $job->title }}</td>
                     <td class=" table-primary ">{{ $job->content }}</td>
                     <td class=" table-dark ">{{ $job->processing_time }}</td>
-                    <td class=" table-secondary"> <span class="badge text-bg-primary ">
-                            {{ $job->category ? $job->category->name : 'Nessuna categoria' }} </span>
+                    <td class=" table-primary">
+                        @forelse ($job->tags as $tag)
+                            <span class="badge text-bg-dark ">{{ $tag->name }}
+                            </span>
+                        @empty
+                            <span class="badge text-bg-dark ">-
+                            </span>
+                        @endforelse
+
                     </td>
+                    <td class=" table-dark "><span class="badge text-bg-primary ">
+                            {{ $job->category ? $job->category->name : 'Nessuna categoria' }} </span></td>
+
                     <td class=" table-primary ">{{ $job->created_at->format('d / m / Y') }}</td>
                     <td class=" table-dark ">
                         <a href="{{ route('admin.jobs.show', ['job' => $job->id]) }}"
