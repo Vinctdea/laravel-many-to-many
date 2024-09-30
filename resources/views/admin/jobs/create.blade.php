@@ -11,7 +11,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('admin.jobs.store') }}" method="POST">
+    <form action="{{ route('admin.jobs.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="title">Titolo</label>
@@ -56,6 +56,11 @@
 
             </div>
         </div>
+        <div class="mb-3">
+            <label class="form-label" for="path_image">Immagine</label>
+            <input class="form-control" type="file" name="path_image" id="path_image">
+        </div>
+
         <div class="mb-3">
             <label for="processing_time">Tempo di realizzazione</label>
             <input type="number" value="{{ old('processing_time') }}"

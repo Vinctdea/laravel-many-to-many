@@ -9,6 +9,7 @@ use App\Functions\Helper;
 use App\Models\Category;
 use App\Models\Job;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Storage;
 
 class JobController extends Controller
 {
@@ -36,16 +37,24 @@ class JobController extends Controller
      */
     public function store(JobsRequest $request)
     {
-
         $data = $request->all();
-
         $data['slug'] = Helper::generateSlug($data['title'], Job::class);
 
+        if (array_key_exists('path_image', $data)) {
+
+            $image_path = Storage::put('uploads', $data['path_image']);
+
+            $original_name = $request->file('path_image')->getClientOriginalName();
+
+            $data['path_image'] = $image_path;
+            $data['image_original_name'] = $original_name;
+        }
         $job = Job::create($data);
 
         if (array_key_exists('tags', $data)) {
             $job->tags()->attach($data['tags']);
         }
+
         return redirect()->route('admin.jobs.show', $job);
     }
 

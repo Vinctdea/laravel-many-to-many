@@ -10,6 +10,7 @@
         <thead>
             <tr>
                 <th scope="col">#ID</th>
+                <th scope="col">Immagine</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Descizione</th>
                 <th scope="col">Tempo di lavorazione WEEK</th>
@@ -25,6 +26,10 @@
             @foreach ($jobs as $job)
                 <tr>
                     <td class=" table-primary ">{{ $job->id }}</td>
+                    <td>
+                        <img class=" img-thumbnail" src="{{ asset('storage/' . $job->path_image) }}"
+                            alt="{{ $job->image_original_name }}" onerror="this.src='/img/placeholder.jpg'">
+                    </td>
                     <td class=" table-dark ">{{ $job->title }}</td>
                     <td class=" table-primary ">{{ $job->content }}</td>
                     <td class=" table-dark ">{{ $job->processing_time }}</td>

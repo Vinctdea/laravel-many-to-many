@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('title', 100);
             $table->string('slug', 100);
             $table->text('content', 100);
+            $table->string('path_image')->nullable();
+            $table->string('image_original_name')->nullable();
             $table->tinyInteger('processing_time')->nullable();
             $table->timestamps();
         });

@@ -6,8 +6,9 @@
      @endif
 
      <h1>dettagli lavoro</h1>
-     <div class="container-fluid m-4">
-         <ul>
+
+     <div class="container-fluid d-flex m-4 justify-content-between">
+         <ul class="w-50">
              <li><strong>Titolo:</strong> {{ $job->title }}</li>
              @if ($job->tags)
                  <li><strong>Tags:</strong>
@@ -19,9 +20,17 @@
              <li><strong>Categoria:</strong> {{ $job->category ? $job->category->name : 'Nessuna categoria' }}</li>
              <li><strong>Descrizione:</strong> {{ $job->content }}</li>
              <li><strong>Tempo di realizzazione:</strong> {{ $job->processing_time }} settimane</li>
+
          </ul>
+         <div>
+             <img class="img-fluid" src="{{ asset('storage/' . $job->path_image) }}" alt="{{ $job->image_original_name }}"
+                 onerror="this.src='/img/placeholder.jpg'">
+         </div>
 
      </div>
+
+
+
      <div class="container-fluid d-flex justify-content-center">
          <a class="btn btn-primary" href="{{ route('admin.jobs.index') }}">Torna all'elenco</a>
          <a href="{{ route('admin.jobs.edit', ['job' => $job->id]) }}"
