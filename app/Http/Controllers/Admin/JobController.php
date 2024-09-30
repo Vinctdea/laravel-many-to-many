@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Functions\Helper;
 use App\Models\Category;
 use App\Models\Job;
+use App\Models\Tag;
 
 class JobController extends Controller
 {
@@ -26,7 +27,8 @@ class JobController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.jobs.create', compact('categories'));
+        $tags = Tag::all();
+        return view('admin.jobs.create', compact('categories', 'tags'));
     }
 
     /**
@@ -36,8 +38,14 @@ class JobController extends Controller
     {
 
         $data = $request->all();
+
         $data['slug'] = Helper::generateSlug($data['title'], Job::class);
+
         $job = Job::create($data);
+
+        if (array_key_exists('tags', $data)) {
+            $job->tags()->attach($data['tags']);
+        }
         return redirect()->route('admin.jobs.show', $job);
     }
 
@@ -55,7 +63,8 @@ class JobController extends Controller
     public function edit(Job $job)
     {
         $categories = Category::all();
-        return view('admin.jobs.edit', compact('job', 'categories'));
+        $tags = Tag::all();
+        return view('admin.jobs.edit', compact('job', 'categories', 'tags'));
     }
 
     /**
@@ -69,6 +78,12 @@ class JobController extends Controller
         }
 
         $job->update($data);
+
+        if (array_key_exists('tags', $data)) {
+            $job->tags()->sync($data['tags']);
+        } else {
+            $job->tags()->detach();
+        }
 
         return redirect()->route('admin.jobs.show', $job)->with('message', 'modifica avvenuta correttamente');
     }

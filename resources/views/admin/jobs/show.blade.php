@@ -9,6 +9,13 @@
      <div class="container-fluid m-4">
          <ul>
              <li><strong>Titolo:</strong> {{ $job->title }}</li>
+             @if ($job->tags)
+                 <li><strong>Tags:</strong>
+                     @foreach ($job->tags as $tag)
+                         <span class="badge text-bg-primary mx-1">{{ $tag->name }}</span>
+                     @endforeach
+                 </li>
+             @endif
              <li><strong>Categoria:</strong> {{ $job->category ? $job->category->name : 'Nessuna categoria' }}</li>
              <li><strong>Descrizione:</strong> {{ $job->content }}</li>
              <li><strong>Tempo di realizzazione:</strong> {{ $job->processing_time }} settimane</li>

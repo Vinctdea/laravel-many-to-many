@@ -45,6 +45,18 @@
             @enderror
         </div>
         <div class="mb-3">
+
+            <label for="tags" class="form-label d-block">Tag</label>
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                @foreach ($tags as $tag)
+                    <input name="tags[]" @if (in_array($tag->id, old('tags', []))) checked @endif value="{{ $tag->id }}"
+                        type="checkbox" class="btn-check" id="{{ $tag->id }}" autocomplete="off">
+                    <label class="btn btn-outline-dark" for="{{ $tag->id }}">{{ $tag->name }}</label>
+                @endforeach
+
+            </div>
+        </div>
+        <div class="mb-3">
             <label for="processing_time">Tempo di realizzazione</label>
             <input type="number" value="{{ old('processing_time') }}"
                 class="form-control @error('processing_time')
@@ -54,7 +66,7 @@
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
-        <button class="btn btn-primary" type="submit">Salva</button>
+        <button class="btn btn-dark" type="submit">Salva</button>
 
 
     </form>

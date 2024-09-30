@@ -18,6 +18,7 @@
                             <th scope="col">Categoria</th>
                             <th scope="col">Tempo di realizzazione</th>
                             <th scope="col">Contenuto</th>
+                            <th scope="col">Tags</th>
                             <th scope="col">ultima modifica</th>
                             <th scope="col">Azioni</th>
 
@@ -30,6 +31,14 @@
                             <td><span class="badge text-bg-dark">{{ $jobs->category->name }}</span></td>
                             <td>{{ $jobs->processing_time }} Settimane</td>
                             <td>{{ $jobs->content }}</td>
+                            <td class=" table-primary">
+                                @forelse ($jobs->tags as $tag)
+                                    <span class="badge text-bg-dark ">{{ $tag->name }}
+                                    </span>
+                                @empty
+                                    <span class="badge text-bg-dark ">-
+                                    </span>
+                                @endforelse
                             <td>{{ $jobs->created_at->format('d/m/Y') }}</td>
                             <td>
                                 <a class="btn btn-dark" href="{{ route('admin.jobs.show', $jobs->id) }}">Vai</a>
