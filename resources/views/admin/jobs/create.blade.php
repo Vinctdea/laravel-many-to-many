@@ -60,12 +60,10 @@
             <label class="form-label" for="path_image">Immagine</label>
             <input class="form-control" type="file" name="path_image" id="path_image">
         </div>
-
         <div class="mb-3">
             <label for="processing_time">Tempo di realizzazione</label>
             <input type="number" value="{{ old('processing_time') }}"
-                class="form-control @error('processing_time')
-                is-invalid @enderror " id="processing_time"
+                class="form-control @error('processing_time')is-invalid @enderror " id="processing_time"
                 name="processing_time" placeholder="tempo in settimane">
             @error('processing_time')
                 <small class="text-danger">{{ $message }}</small>

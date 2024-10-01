@@ -14,6 +14,7 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
+                            <th scope="col">Immagine</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Categoria</th>
                             <th scope="col">Tempo di realizzazione</th>
@@ -27,6 +28,10 @@
                     <tbody>
                         <tr>
                             <td>{{ $jobs->id }}</td>
+                            <td>
+                                <img class=" img-thumbnail w-25" src="{{ asset('storage/' . $jobs->path_image) }}"
+                                    alt="{{ $jobs->image_original_name }}" onerror="this.src='/img/placeholder.jpg'">
+                            </td>
                             <td>{{ $jobs->title }}</td>
                             <td><span class="badge text-bg-dark">{{ $jobs->category->name }}</span></td>
                             <td>{{ $jobs->processing_time }} Settimane</td>

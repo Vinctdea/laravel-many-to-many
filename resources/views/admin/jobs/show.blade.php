@@ -7,8 +7,8 @@
 
      <h1>dettagli lavoro</h1>
 
-     <div class="container-fluid d-flex m-4 justify-content-between">
-         <ul class="w-50">
+     <div class="container-fluid d-flex my-3 justify-content-evenly">
+         <ul class="w-50 my-4">
              <li><strong>Titolo:</strong> {{ $job->title }}</li>
              @if ($job->tags)
                  <li><strong>Tags:</strong>
